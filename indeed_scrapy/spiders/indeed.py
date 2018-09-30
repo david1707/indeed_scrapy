@@ -33,6 +33,8 @@ class IndeedSpider(Spider):
     def parse_job_offer(self, response):
         title = response.xpath('//h3[contains(@class, "JobInfoHeader-title")]/text()').extract_first()
         company = response.xpath('//*[contains(@class, "InlineCompanyRating")]/div/text()').extract()[0]
+        if not company:
+            company_rating = "This job offer is not displaying the company."
         company_rating = response.xpath('//meta[@itemprop="ratingValue"]/@content').extract_first()
         if not company_rating:
             company_rating = 'This company does not have a rating'
