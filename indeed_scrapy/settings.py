@@ -64,9 +64,14 @@ DOWNLOAD_DELAY = 0.5
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'indeed_scrapy.pipelines.IndeedScrapyPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'indeed_scrapy.pipelines.MongoIndeedPipeline': 300,
+}
+
+MONGO_SERVER = 'localhost'
+MONGO_PORT = 27017
+MONGO_DB = 'indeed'
+MONGO_COLLECTION = 'jobs'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
